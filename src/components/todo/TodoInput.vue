@@ -1,9 +1,9 @@
 <template>
   <form>
-    <label class="label">New to do: </label>
-    <input type="text" placeholder="type to do here" v-model="todoContent">
-    <span class="warning" :class="{activeWarning: this.todoContent === ''}">Please type somethings</span>
-    <button type="button" @click.stop="submitTodo">Submit</button>
+    <b-form-input placeholder="type to do here" v-model="todoContent"></b-form-input>
+    <span class="warning" :class="{'active-warning': isWarning}">Please type somethings</span>
+    <b-button variant="success" class="button" @click.stop="submitTodo">Submit</b-button>
+
   </form>
 </template>
 
@@ -12,17 +12,20 @@
 export default {
   data() {
     return {
-      todoContent: ''
+      todoContent: '',
+      isWarning: false
     }
   },
   inject: ['addTodo'],
   methods: {
     submitTodo() {
-      console.log(this.todoContent, this.todoContent !== '');
       if(this.todoContent !== '') {
         const todoItem = {id: (new Date()).toString(), content: this.todoContent}
         this.addTodo(todoItem)
-        this.todoContent = ''
+        this.todoContent = '',
+        this.isWarning=false
+      } else {
+        this.isWarning = true
       }
     }
   }
@@ -32,6 +35,8 @@ export default {
 <style scoped>
 .active-warning {
   display: block !important; 
+  color: red;
+
 }
 .warning {
   display: none;
@@ -39,5 +44,8 @@ export default {
 }
 .label {
   margin-right: 10px;
+}
+.button {
+  margin-top: 10px;
 }
 </style>

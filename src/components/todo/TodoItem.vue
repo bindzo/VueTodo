@@ -1,5 +1,5 @@
 <template>
-  <li class="item" @click="removeTodo(id)">{{content}} [x]</li>
+  <b-list-group-item button class="item" @click="removeTodo(id)">{{content}}</b-list-group-item>
 </template>
 
 <script>

@@ -1,15 +1,17 @@
 <template>
-  <section class="wrapper">
-    <todo-input/>
-    <ul>
+  <b-card bg-variant="light" title="TODO List">
+  <b-card-text>
+   <todo-input/>
+    <b-list-group class="list">
       <todo-item
         v-for="todo in todoList"
         :key="todo.id"
         :id="todo.id"
         :content="todo.content"
       />
-    </ul>
-  </section>
+    </b-list-group>
+  </b-card-text>
+</b-card>
 </template>
 
 <script>
@@ -35,5 +37,9 @@ ul {
   border: 1px black solid;
   width: 600px;
   padding: 10px;
+}
+
+.list {
+  margin-top: 20px;
 }
 </style>

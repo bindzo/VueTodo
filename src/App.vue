@@ -1,16 +1,15 @@
 <template>
   <section class="container">
-    <h1>TODO list</h1>
-    <todo :todoList="todoList" />
+    <todo-list :todoList="todoList" />
   </section>
 </template>
 
 <script>
-import Todo from './pages/Todo.vue';
+import TodoList from './pages/TodoList.vue';
 
 export default {
   components: {
-    Todo
+    TodoList
   },
   provide() {
     return {
